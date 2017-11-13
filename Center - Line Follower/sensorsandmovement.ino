@@ -13,20 +13,21 @@ int dist;
 int phot;
 int refl;
 
+
 void testSensors() {
 
   pinMode(REFLSENSOR, INPUT);
 
   refl = analogRead(REFLSENSOR-14);
    
-  Serial.print("Reflectance: ");Serial.println(refl); 
+  Serial.print("Reflectance: ");
+  Serial.println(refl); 
   
   delay(1500);
 }
-
 void fwd(){
   pinMode(REFLSENSOR, INPUT);
-  setPowerLevel(90);
+  setPowerLevel(95);
   while(analogRead(REFLSENSOR-14) < 300){
      forward();
   }
@@ -58,6 +59,5 @@ void turnonwhite(){
   halt();
   
 }
-
 
 
