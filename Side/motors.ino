@@ -61,6 +61,33 @@ void turnR(){
 }
 
 void motorControl(int y, int z){
+  if (y > 0){
+  analogWrite(LEN, y);
+  
+  digitalWrite(LPLUS, HIGH);
+  digitalWrite(LMINUS, LOW);
+  
+  } else {
+    analogWrite(LEN, abs(y));
+  
+  digitalWrite(LPLUS, LOW);
+  digitalWrite(LMINUS, HIGH);
+  
+  }
+
+  if (z > 0){
+  analogWrite(REN, z);
+  
+  digitalWrite(RPLUS, HIGH);
+  digitalWrite(RMINUS, LOW);
+  
+  } else {
+    analogWrite(REN, abs(y));
+  
+  digitalWrite(LPLUS, LOW);
+  digitalWrite(LMINUS, HIGH);
+  
+  }
   analogWrite(LEN, y);
   analogWrite(REN, z);
   digitalWrite(LPLUS, HIGH);
@@ -85,11 +112,9 @@ void runAway(){
 }
 
 void setupMove(){
-  motorControl(255, 255);
-  delay(200);
-  motorControl(255, 0);
+  delay(2000);
+  motorControl(-255, 255);
   delay(750);
-  
   halt();
 }
 
