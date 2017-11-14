@@ -34,8 +34,8 @@ void forward(){
 }
 
 void backward(){
-  analogWrite(LEN, x);
-  analogWrite(REN, m);
+  analogWrite(LEN, 225);
+  analogWrite(REN, 225);
   digitalWrite(LPLUS, LOW);
   digitalWrite(LMINUS, HIGH);
   digitalWrite(RPLUS, LOW);
@@ -73,4 +73,24 @@ void setPowerLevel(int pwr){
   x = pwr;
   m = x * 0.75;
 }
+
+void runAway(){
+  halt();
+  motorControl(0, 255);
+  delay(450);
+  motorControl(255, 200);
+  delay(1500);
+  halt();
+  
+}
+
+void setupMove(){
+  motorControl(255, 255);
+  delay(200);
+  motorControl(255, 0);
+  delay(750);
+  
+  halt();
+}
+
 
