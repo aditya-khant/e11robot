@@ -1,5 +1,5 @@
 #define trigpin A3
-#define echopin A4
+#define echopin A2
 
 void initUS(){
   pinMode(trigpin, OUTPUT);
