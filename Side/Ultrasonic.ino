@@ -1,5 +1,5 @@
-#define trigpin 10
-#define echopin 4
+#define trigpin 5
+#define echopin 10
 
 void initUS(){
   pinMode(trigpin, OUTPUT);
@@ -17,7 +17,7 @@ float calcDist(){
   digitalWrite(trigpin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigpin, LOW);
-  durationIn = pulseIn(echopin, HIGH);
+  durationIn = pulseIn(echopin, HIGH, 50000);
   cmVal = cmCon * durationIn;
   //inchVal = cmVal * inCon;
   // Serial.print("Distance in cm: ");

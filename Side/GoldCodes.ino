@@ -37,16 +37,33 @@ char color = 'w';
 int goldCodes[numGoldCodes][gcLen];
 int goldcTemp[gcLen];
 
-void initGC(){
-  if 
-}
 
-void detectGoldCode() {
+
+boolean detectGoldCode() {
   //run all functions
   sampleCollect();
   toBinary();
   correlateR();
-  pnt();
+  //pnt();
+  if (abs(D1) > 30){
+    if (color == 'w'){
+      if(isWhite){
+        return false;
+      } else {
+        return true;
+      }
+    } else if(color == 'g'){
+      if(isWhite){
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }else {
+    return false;
+  }
 }
 
 void sampleCollect() {
