@@ -13,12 +13,14 @@ boolean goldCodes[9][31] = {{0,0,0,0,0,0,0,1,0,0,0,1,1,0,1,1,0,0,0,0,1,1,0,0,1,1
                            {0,0,0,1,0,0,1,1,1,1,0,1,0,1,0,0,1,0,0,0,0,0,0,1,0,0,1,1,0,0,1}};
 void gcsetup(){
   // put your setup code here, to run once:
-  Serial.begin(9600);
+  //Serial.begin(9600);
   pinMode(LED1, OUTPUT);
+  //pinMode(2, INPUT);
+  pinMode(3, INPUT);
   pinMode(LED2, OUTPUT);
   digitalWrite(LED1, LOW);
   digitalWrite(LED2, LOW);
-  delay(1500);
+  //delay(1500);
   invertBits = !(digitalRead(3));
 }
 

@@ -69,8 +69,8 @@ void motorControl(int y, int z){
   digitalWrite(RMINUS, LOW);
 }
 
-void setPowerLevel(int pwr){
-  x = pwr;
-  m = x * 0.75;
-}
+//void setPowerLevel(int pwr){
+ // m = pwr;
+  //x = m * 0.2;
+//}
 

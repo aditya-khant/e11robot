@@ -27,25 +27,29 @@ void testSensors() {
 }
 void fwd(){
   pinMode(REFLSENSOR, INPUT);
-  setPowerLevel(95);
+//  setPowerLevel(95);
+  motorControl(83,56);
+  delay(300);
   while(analogRead(REFLSENSOR-14) < 300){
-     forward();
+     //forward();
+     //
   }
   halt();
 }
 
-void initialturn(){
-  pinMode(REFLSENSOR, INPUT);
-  while(analogRead(REFLSENSOR-14) > 300){
-    turnR();
-  }
-  halt();
-  
-}
+//void initialturn(){
+//  pinMode(REFLSENSOR, INPUT);
+//  while(analogRead(REFLSENSOR-14) > 300){
+//    turnR();
+//  }
+//  halt();
+//  
+//}
 void turnonblack(){
   pinMode(REFLSENSOR, INPUT);
   while(analogRead(REFLSENSOR-14) > 300){
-    motorControl(140,70);
+    motorControl(120,60);
+    gcloop();
   }
   halt();
   
@@ -54,7 +58,8 @@ void turnonblack(){
 void turnonwhite(){
   pinMode(REFLSENSOR, INPUT);
   while(analogRead(REFLSENSOR-14) < 300){
-     motorControl(70,140);
+     motorControl(60,120);
+     gcloop();
   }
   halt();
   

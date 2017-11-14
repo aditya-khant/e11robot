@@ -8,7 +8,7 @@ void setup() {
   initMotors();
   // Go ahead and stop
   fwd();
-  gcsetup();
+  //gcsetup();
   halt(); 
   delay(5);
   
