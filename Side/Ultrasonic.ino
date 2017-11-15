@@ -23,6 +23,6 @@ float calcDist(){
   // Serial.print("Distance in cm: ");
   Serial.println(durationIn);
   return cmVal;
-  // Serial.print("Distance in inch: ");
-  // Serial.println(inchVal);
+  //Serial.print("Distance in inch: ");
+  //Serial.println(inchVal);
 }

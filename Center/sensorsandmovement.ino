@@ -50,6 +50,7 @@ void turnonblack(){
   while(analogRead(REFLSENSOR-14) > 300){
     motorControl(120,60);
     gcloop();
+    calcDist();
   }
   halt();
   
@@ -60,9 +61,29 @@ void turnonwhite(){
   while(analogRead(REFLSENSOR-14) < 300){
      motorControl(60,120);
      gcloop();
+     calcDist();
   }
   halt();
   
 }
 
+void avoidCrash(){
+   if (durationIn < 10);
+   {
+    while (true){
+     while(analogRead(REFLSENSOR-14) > 300){ //reverse on black
+       revControl(60,120);
+       gcloop();
+       calcDist();
+      } 
+     halt();
+     while(analogRead(REFLSENSOR-14) < 300){ //reverse on white
+      revControl(120,60);
+      gcloop();
+      calcDist();
+      }
+     halt();
+    }
+   }
+} 
 
