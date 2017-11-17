@@ -45,7 +45,7 @@ boolean detectGoldCode() {
   toBinary();
   correlateR();
   //pnt();
-  if (abs(D1) > 30){
+  if (abs(D1) > 30 and D2 < 5){
     if (color == 'w'){
       if(isWhite){
         return false;

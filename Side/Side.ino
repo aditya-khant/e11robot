@@ -16,20 +16,29 @@ void setup() {
   initMotors();
   initUS();
   setupMove();
-  
-  
+
+
 
 }
 
 void loop() {
-  //testSensors();
-  while(!(detectGoldCode()) and !(digitalRead(boopPin))){
-    motorControl(255,225);
+  workingWithoutReturn();
+  
+}
+
+void workingWithoutReturn(){
+  while (!(detectGoldCode()) and !(digitalRead(boopPin))) {
+    motorControl(255, 240);
   }
-  if (detectGoldCode() ){
+  if (detectGoldCode() ) {
     runAway();
   }
-  if (digitalRead(boopPin)){
-    motorControl(-50,- 225);
+  if (digitalRead(boopPin)) {
+    halt();
+    while (digitalRead(boopPin)) {
+      motorControl(255, -255);
+      delay(400);
+    }
   }
 }
+

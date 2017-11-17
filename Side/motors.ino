@@ -68,7 +68,7 @@ void motorControl(int y, int z){
   digitalWrite(LMINUS, LOW);
   
   } else {
-    analogWrite(LEN, abs(y));
+  analogWrite(LEN, abs(y));
   
   digitalWrite(LPLUS, LOW);
   digitalWrite(LMINUS, HIGH);
@@ -88,12 +88,6 @@ void motorControl(int y, int z){
   digitalWrite(LMINUS, HIGH);
   
   }
-  analogWrite(LEN, y);
-  analogWrite(REN, z);
-  digitalWrite(LPLUS, HIGH);
-  digitalWrite(LMINUS, LOW);
-  digitalWrite(RPLUS, HIGH);
-  digitalWrite(RMINUS, LOW);
 }
 
 void setPowerLevel(int pwr){
@@ -114,7 +108,7 @@ void runAway(){
 void setupMove(){
   delay(2000);
   motorControl(-255, 255);
-  delay(750);
+  delay(250);
   halt();
 }
 
