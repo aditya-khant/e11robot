@@ -5,6 +5,7 @@
 #define gcLen 31
 #define lengthGoldCodes 31
 #define numGoldCodes 9
+#define returnCor 30
 
 //initialize all variables
 unsigned long sampleStart = 0;
@@ -238,7 +239,7 @@ void returnStrat() {
   if (millis() - whendidwestart > returnTime) {
 
     if (!isWhite) {
-      if (D2 == 2 ) {
+      if (D2 == 2 and abs(D1) > returnCor) {
         
         while (true) {
           halt();
@@ -246,7 +247,7 @@ void returnStrat() {
       }
 
     } else {
-      if (D2 == 4 ) {
+      if (D2 == 4 and abs(D1) > returnCor) {
         while (true) {
           halt();
         }
