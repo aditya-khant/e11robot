@@ -45,15 +45,15 @@ boolean detectGoldCode() {
   toBinary();
   correlateR();
   //pnt();
-  if (abs(D1) > 30 and D2 < 5){
-    if (color == 'w'){
-      if(isWhite){
+  if (abs(D1) > 30 and D2 < 5) {
+    if (color == 'w') {
+      if (isWhite) {
         return false;
       } else {
         return true;
       }
-    } else if(color == 'g'){
-      if(isWhite){
+    } else if (color == 'g') {
+      if (isWhite) {
         return true;
       } else {
         return false;
@@ -61,7 +61,7 @@ boolean detectGoldCode() {
     } else {
       return false;
     }
-  }else {
+  } else {
     return false;
   }
 }
@@ -232,4 +232,26 @@ int maximum2(int x[], int y) //finds the value of d with maximum absolute value
 
   }
   return maxx;
+}
+
+void returnStrat() {
+  if (millis() - whendidwestart > returnTime) {
+
+    if (!isWhite) {
+      if (D2 == 2 ) {
+        
+        while (true) {
+          halt();
+        }
+      }
+
+    } else {
+      if (D2 == 4 ) {
+        while (true) {
+          halt();
+        }
+      }
+    }
+  }
+
 }
