@@ -3,43 +3,24 @@
 #define CREFLSENSOR 16
 #define PHOTSENSOR 19
 
-// values of reflectance for arena
-int rblack = 323;
-int rwhite = 52;
-int rred = 65;
-int rblue = 230;
 
-int dist;
-int phot;
-int refl;
+#define CW 10 //lol
 
-
-void testSensors() {
-
-  pinMode(REFLSENSOR, INPUT);
-
-  refl = analogRead(REFLSENSOR-14);
-   
-  Serial.print("Reflectance: ");
-  Serial.println(refl); 
-  
-  delay(1500);
+void cwTest(){
+  clockwise = (digitalRead(10));
 }
-void jumpoff(){
-  revControl(50,50);
-  delay(500);
-}
-void fwd(){
+
+void ccfwd(){
   pinMode(REFLSENSOR, INPUT);
 //  setPowerLevel(95);
-  motorControl(83,60);
-  delay(1000);
+  motorControl(83,65);
+  delay(300);
   while(analogRead(REFLSENSOR-14) < 300){
      //forward();
      //
   }
   halt();
-  motorControl(50,0);
+  motorControl(0,30);
   delay(100);
 }
 
@@ -52,10 +33,10 @@ void fwd(){
 //  
 //}
 
-void turnonblack(){
+void ccturnonblack(){
   pinMode(REFLSENSOR, INPUT);
   while(analogRead(REFLSENSOR-14) > 300){
-    motorControl(140,60);
+    motorControl(60,120);
     gcloop();
     //calcDist();
   }
@@ -63,10 +44,10 @@ void turnonblack(){
   
 }
 
-void turnonwhite(){
+void ccturnonwhite(){
   pinMode(REFLSENSOR, INPUT);
   while(analogRead(REFLSENSOR-14) < 300){
-     motorControl(60,140);
+     motorControl(120,60);
      gcloop();
      //calcDist();
   }
