@@ -52,8 +52,8 @@ void turnL(){
 }
 
 void turnR(){
-  analogWrite(LEN, x);
-  analogWrite(REN, m);
+  analogWrite(LEN, 255);
+  analogWrite(REN, 255);
   digitalWrite(LPLUS, HIGH);
   digitalWrite(LMINUS, LOW);
   digitalWrite(RPLUS, LOW);
@@ -106,10 +106,12 @@ void runAway(){
 }
 
 void setupMove(){
-  delay(2000);
-  motorControl(-255, 255);
-  delay(250);
-  halt();
+  delay(1000);
+  motorControl(255, 255);
+  delay(1000);
+  turnR();
+  delay(300);
+  
 }
 
 
