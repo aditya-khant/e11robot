@@ -1,2 +1,2 @@
 # e11robot
-A private repo for HMC E11 Robot
+This repository contains code for my e11 robot. It was written in collaboration with Daphne Poon. 

@@ -1,3 +1,5 @@
+
+//Initialize Pins
 #define RPLUS 7
 #define RMINUS 12
 #define LPLUS 9
@@ -7,7 +9,7 @@
 
 // int powerLevel = 255;
 
-void initMotors(){
+void initMotors(){ // Initialize Motors
   pinMode(RPLUS, OUTPUT);
   pinMode(RMINUS, OUTPUT);
   pinMode(LPLUS, OUTPUT);
@@ -15,7 +17,7 @@ void initMotors(){
   pinMode(LEN, OUTPUT);
   pinMode(REN, OUTPUT);
 }
-void halt(){
+void halt(){ //Halt all motors
   analogWrite(LEN, x);
   analogWrite(REN, m);
   digitalWrite(LPLUS, LOW);
@@ -24,7 +26,7 @@ void halt(){
   digitalWrite(RMINUS, LOW);
 }
 
-void forward(){
+void forward(){ // Go Forward 
   analogWrite(LEN, x);
   analogWrite(REN, m);
   digitalWrite(LPLUS, HIGH);
@@ -33,7 +35,7 @@ void forward(){
   digitalWrite(RMINUS, LOW);
 }
 
-void backward(){
+void backward(){ // Go Backwards
   analogWrite(LEN, 225);
   analogWrite(REN, 225);
   digitalWrite(LPLUS, LOW);
@@ -42,7 +44,7 @@ void backward(){
   digitalWrite(RMINUS, HIGH);
 }
 
-void turnL(){
+void turnL(){ //Turn Left
   analogWrite(LEN, x);
   analogWrite(REN, m);
   digitalWrite(LPLUS, LOW);
@@ -51,7 +53,7 @@ void turnL(){
   digitalWrite(RMINUS, LOW);
 }
 
-void turnR(){
+void turnR(){ //turn Right
   analogWrite(LEN, 255);
   analogWrite(REN, 255);
   digitalWrite(LPLUS, HIGH);
@@ -60,42 +62,42 @@ void turnR(){
   digitalWrite(RMINUS, HIGH);
 }
 
-void motorControl(int y, int z){
-  if (y > 0){
-  analogWrite(LEN, y);
-  
+void motorControl(int y, int z){ //Custom motor control to control each individual motor
+  if (y > 0){ // if y is positive
+  analogWrite(LEN, y); // Write power to Left
+  //Go forward
   digitalWrite(LPLUS, HIGH);
   digitalWrite(LMINUS, LOW);
   
   } else {
-  analogWrite(LEN, abs(y));
-  
+  analogWrite(LEN, abs(y));//Write abs power to Left
+  //Go back
   digitalWrite(LPLUS, LOW);
   digitalWrite(LMINUS, HIGH);
   
   }
 
-  if (z > 0){
-  analogWrite(REN, z);
-  
+  if (z > 0){ //if z is positive
+  analogWrite(REN, z);// Write power to Z
+  //Right go forward
   digitalWrite(RPLUS, HIGH);
   digitalWrite(RMINUS, LOW);
   
   } else {
-    analogWrite(REN, abs(y));
-  
+    analogWrite(REN, abs(y)); //write abs power to Right
+  //Left go forward. While this was a coding error, fixing it worsened our robot. 
   digitalWrite(LPLUS, LOW);
   digitalWrite(LMINUS, HIGH);
   
   }
 }
 
-void setPowerLevel(int pwr){
+void setPowerLevel(int pwr){ // Motor Power Library
   x = pwr;
   m = x * 0.75;
 }
 
-void runAway(){
+void runAway(){ //Stop, turn left, run into the wall
   halt();
   motorControl(0, 255);
   delay(450);
@@ -105,7 +107,7 @@ void runAway(){
   
 }
 
-void setupMove(){
+void setupMove(){// Wait for 1s go straight, and then turn Right into the wall
   delay(1000);
   motorControl(255, 255);
   delay(1000);
