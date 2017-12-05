@@ -2,14 +2,13 @@
 #define boopOut 5 //Pin to send current to bump sensor
 #define returnTime 50000 // Time in ms to return back to base
 
-// Initialization of global variabkes
+// Initialization of global variables
 int x = 0; 
 int m = 0;
 bool isWhite = true;
 long whendidwestart = millis();
 
 void setup() {
-  // put your setup code here, to run once:
   long startTime = millis(); // Set starttime for gold code detection
   bool letsReturn = false; //To return or not to return
   Serial.begin(9600); // initialize Serial

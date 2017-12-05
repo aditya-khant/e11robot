@@ -6,62 +6,46 @@ int dist;
 int phot;
 int refl;
 
-void testSensors() {
-
+void testSensors() { //this code was just used to read the reflectance values directly for calibration
   pinMode(REFLSENSOR, INPUT);
-
   refl = analogRead(REFLSENSOR-14);
-   
   Serial.print("Reflectance: ");
   Serial.println(refl); 
-  
   delay(1500);
 }
-void jumpoff(){
+
+void jumpoff(){ //the center robot would drive backward for 2.5 seconds, then stop.
+  // this gave it ample time to fall off the back of the side robot and align itself with the wall.
   revControl(230,205);
   delay(2500);
   halt();
 }
-void fwd(){
-  pinMode(REFLSENSOR, INPUT);
-  motorControl(100,70);
-  delay(1000);
-  while(analogRead(REFLSENSOR-14) < 315){
-    motorControl(100,70);
+
+void fwd(){ 
+  pinMode(REFLSENSOR, INPUT); //initializes the reflectance pin as input
+  motorControl(100,70); //drives forward 
+  //(recall the left motor is weaker than the right one, 
+  // so we need a higher power level input on the left for the robot to drive forward)
+  while(analogRead(REFLSENSOR-14) < 315){ //before hitting the black circle
+    motorControl(100,70); //keep driving forward
   }
-  halt();
-  revControl(50,100);
+  halt(); //once the circle has been hit, and the loop is exited, stop
+  revControl(50,100); //drive back briefly (this helps avoid colliding with the central blocks)
   delay(200);
 }
 
 void turnonblack(){
-  pinMode(REFLSENSOR, INPUT);
-  while(analogRead(REFLSENSOR-14) > 315){
-    //motorControl(130,65);
-    //motorControl(120,55);
-    motorControl(120,60);
-    //motorControl(140,60);
-    //motorControl(150,75);
-    //motorControl(240,120);
-    gcloop();
-    //calcDist();
+  while(analogRead(REFLSENSOR-14) > 315){ //while on the black circle
+    motorControl(120,60); //drives right and forward
+    gcloop(); // flashes one loop of the gold codes
   }
-  halt();
-  
+  halt(); //stops
 }
 
 void turnonwhite(){
-  pinMode(REFLSENSOR, INPUT);
-  while(analogRead(REFLSENSOR-14) < 315){
-     //motorControl(65,130);
-     //motorControl(60,110);
-     motorControl(60,120);
-     //motorControl(60,140);
-     //motorControl(70,150);
-     //motorControl(240,120);
-     gcloop();
-     //calcDist();
+  while(analogRead(REFLSENSOR-14) < 315){ //while on the white part of the board
+     motorControl(60,120); //drives left and forward
+     gcloop(); // flashes one loop of the gold codes
   }
-  halt();
-  
+  halt(); //stops
 }

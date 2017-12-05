@@ -4,10 +4,10 @@
 #define LMINUS 8
 #define LEN 6
 #define REN 11
+//defines the above pins, which we later use to control the motors.
 
-// int powerLevel = 255;
 
-void initMotors(){
+void initMotors(){ //sets all of the motor pins as output pins
   pinMode(RPLUS, OUTPUT);
   pinMode(RMINUS, OUTPUT);
   pinMode(LPLUS, OUTPUT);
@@ -15,7 +15,8 @@ void initMotors(){
   pinMode(LEN, OUTPUT);
   pinMode(REN, OUTPUT);
 }
-void halt(){
+
+void halt(){ // turns off all motors to stop the robot.
   analogWrite(LEN, x);
   analogWrite(REN, m);
   digitalWrite(LPLUS, LOW);
@@ -24,43 +25,8 @@ void halt(){
   digitalWrite(RMINUS, LOW);
 }
 
-void forward(){
-  analogWrite(LEN, x);
-  analogWrite(REN, m);
-  digitalWrite(LPLUS, HIGH);
-  digitalWrite(LMINUS, LOW);
-  digitalWrite(RPLUS, HIGH);
-  digitalWrite(RMINUS, LOW);
-}
-
-void backward(){
-  analogWrite(LEN, x);
-  analogWrite(REN, m);
-  digitalWrite(LPLUS, LOW);
-  digitalWrite(LMINUS, HIGH);
-  digitalWrite(RPLUS, LOW);
-  digitalWrite(RMINUS, HIGH);
-}
-
-void turnL(){
-  analogWrite(LEN, x);
-  analogWrite(REN, m);
-  digitalWrite(LPLUS, LOW);
-  digitalWrite(LMINUS, HIGH);
-  digitalWrite(RPLUS, HIGH);
-  digitalWrite(RMINUS, LOW);
-}
-
-void turnR(){
-  analogWrite(LEN, x);
-  analogWrite(REN, m);
-  digitalWrite(LPLUS, HIGH);
-  digitalWrite(LMINUS, LOW);
-  digitalWrite(RPLUS, LOW);
-  digitalWrite(RMINUS, HIGH);
-}
-
-void motorControl(int y, int z){
+void motorControl(int y, int z){ 
+  //drives forward, but because the motor power levels can be unequal, it could also turn one way
   analogWrite(LEN, y);
   analogWrite(REN, z);
   digitalWrite(LPLUS, HIGH);
@@ -69,7 +35,7 @@ void motorControl(int y, int z){
   digitalWrite(RMINUS, LOW);
 }
 
-void revControl(int y, int z){
+void revControl(int y, int z){ // same as motorControl, but for driving backward
   analogWrite(LEN, y);
   analogWrite(REN, z);
   digitalWrite(LPLUS, LOW);
@@ -77,10 +43,4 @@ void revControl(int y, int z){
   digitalWrite(RPLUS, LOW);
   digitalWrite(RMINUS, HIGH);
 }
-
-
-//void setPowerLevel(int pwr){
- // m = pwr;
-  //x = m * 0.2;
-//}
 
