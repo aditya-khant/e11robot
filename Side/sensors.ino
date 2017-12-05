@@ -1,3 +1,5 @@
+// NOTE: NOT USED FOR SIDE ROBOT
+
 #define DISTSENSOR 14
 #define REFLSENSOR 18
 #define CREFLSENSOR 16
@@ -13,7 +15,7 @@ int dist;
 int phot;
 int refl;
 
-void testSensors() {
+void testSensors() {//Outputs value for refl sensor
 
   pinMode(REFLSENSOR, INPUT);
 
@@ -24,7 +26,7 @@ void testSensors() {
   delay(1500);
 }
 
-void fwd(){
+void fwd(){ //go forward
   pinMode(REFLSENSOR, INPUT);
   setPowerLevel(90);
   while(analogRead(REFLSENSOR-14) < 300){
@@ -33,7 +35,7 @@ void fwd(){
   halt();
 }
 
-void initialturn(){
+void initialturn(){//First turn while line following
   pinMode(REFLSENSOR, INPUT);
   while(analogRead(REFLSENSOR-14) > 300){
     turnR();
@@ -41,7 +43,7 @@ void initialturn(){
   halt();
   
 }
-void turnonblack(){
+void turnonblack(){ //turn right on black
   pinMode(REFLSENSOR, INPUT);
   while(analogRead(REFLSENSOR-14) > 300){
     motorControl(140,70);
@@ -50,7 +52,7 @@ void turnonblack(){
   
 }
 
-void turnonwhite(){
+void turnonwhite(){ // turn left on white
   pinMode(REFLSENSOR, INPUT);
   while(analogRead(REFLSENSOR-14) < 300){
      motorControl(70,140);

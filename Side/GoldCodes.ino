@@ -1,5 +1,6 @@
 // Name: Aditya Khant . Worked with Daphne Poon
 
+//Initial constants
 #define PHOTSENSOR 19
 #define sampLength 31
 #define gcLen 31
@@ -45,25 +46,25 @@ boolean detectGoldCode() {
   sampleCollect();
   toBinary();
   correlateR();
-  //pnt();
-  if (abs(D1) > 30 and D2 < 5) {
-    if (color == 'w') {
-      if (isWhite) {
-        return false;
+  //pnt(); 
+  if (abs(D1) > 30 and D2 < 5) {//If correlation is above 30, and Gold Code is below 5
+    if (color == 'w') { //If the color of gold code is white
+      if (isWhite) { //If we are team green
+        return false; //return false
       } else {
-        return true;
+        return true; // return true
       }
-    } else if (color == 'g') {
-      if (isWhite) {
-        return true;
+    } else if (color == 'g') {//if the color of the gold code is green 
+      if (isWhite) { // If we are team green
+        return true; // return true
       } else {
-        return false;
+        return false; // else return false
       }
     } else {
-      return false;
+      return false; // else return false
     }
   } else {
-    return false;
+    return false; //else return false
   }
 }
 
@@ -235,8 +236,9 @@ int maximum2(int x[], int y) //finds the value of d with maximum absolute value
   return maxx;
 }
 
+//Return Strategy
 void returnStrat() {
-  if (millis() - whendidwestart > returnTime) {
+  if (millis() - whendidwestart > returnTime) { 
 
     if (!isWhite) {
       if (D2 == 2 and abs(D1) > returnCor) {
