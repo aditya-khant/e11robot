@@ -60,7 +60,7 @@ void gcloop() {
   else{
     for(int i=4; i<8; i++)
     {
-      for(int y=0; y<2; y++) //loops gc thrice
+      for(int y=0; y<2; y++) //loops gc twice
       {
         for(int z=0; z<31; z++)
         {

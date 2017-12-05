@@ -20,7 +20,6 @@ void setup() {
 }
 
 void loop() {
-   gcloop();
    turnonblack();
    turnonwhite();
 }

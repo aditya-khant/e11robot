@@ -20,13 +20,10 @@ void testSensors() {
 void jumpoff(){
   revControl(230,205);
   delay(2500);
-  //revControl(60,120);
-  //delay(300);
   halt();
 }
 void fwd(){
   pinMode(REFLSENSOR, INPUT);
-//  setPowerLevel(95);
   motorControl(100,70);
   delay(1000);
   while(analogRead(REFLSENSOR-14) < 315){
